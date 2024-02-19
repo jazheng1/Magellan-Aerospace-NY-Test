@@ -16,9 +16,14 @@ namespace MagellanTest.Controllers
 
         [HttpPost]
         public ActionResult<Item> CreateItem([FromBody]Item newItem)
-        {   
-            var itemId = _dbContext.Add(newItem);
-            return Ok(new { id = itemId });
+        {      
+            // var itemId = _dbContext.Add(newItem);
+            // return Ok(new { id = itemId });
+            _dbContext.Items.Add(newItem);
+            _dbContext.SaveChanges(); // Save changes to the database to generate the ID
+
+            // Now newItem.Id will be populated with the generated ID
+            return Ok(new { id = newItem });
         }
 
 
