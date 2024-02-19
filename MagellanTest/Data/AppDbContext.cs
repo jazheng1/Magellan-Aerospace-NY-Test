@@ -1,13 +1,11 @@
 using Microsoft.EntityFrameworkCore;
 using MagellanTest.Model;
 
-namespace MagellanTest.Model {
-    public class ItemContext : DbContext
+public class AppDbContext : DbContext
+{
+    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
     {
-        public ItemContext(DbContextOptions<ItemContext> options) : base(options)
-        {
-        }
-
-        public DbSet<Item> Items { get; set; } = null!;
     }
+
+    public DbSet<Item> Items { get; set; }
 }
