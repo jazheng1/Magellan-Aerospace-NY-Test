@@ -1,5 +1,6 @@
 var builder = WebApplication.CreateBuilder(args);
-
+// using Microsoft.EntityFrameworkCore;
+// using TodoApi.Models;
 // Add services to the container.
 
 builder.Services.AddControllers();

@@ -1,6 +1,5 @@
 Put the PostgreSQL script of Part 1 here.
 
-
 -- Create the Part database
 CREATE DATABASE Part;
 

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "X2CpLSRlFKOnySx8gGZiqKIvUtNU2vRqqTAA0baUfKiom0tsyvTsbRTPTcC8ZNZUmk2J1Tx7I1xvkZQ3CSPoPw==",
+  "dgSpecHash": "7I/47tF9gF0G3iIqoX6aAohMjVhJSNHFdOIwkFGuVpWz/ByXhv7KTM8lkq9QLFyPo+LZ/RHyl30NPvTF4IuoOQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\jason\\OneDrive\\desktop\\Magellan-Aerospace-NY-Test\\MagellanTest\\MagellanTest.csproj",
   "expectedPackageFiles": [
@@ -19,7 +19,7 @@
     "C:\\Users\\jason\\.nuget\\packages\\microsoft.extensions.options\\7.0.0\\microsoft.extensions.options.7.0.0.nupkg.sha512",
     "C:\\Users\\jason\\.nuget\\packages\\microsoft.extensions.primitives\\7.0.0\\microsoft.extensions.primitives.7.0.0.nupkg.sha512",
     "C:\\Users\\jason\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
-    "C:\\Users\\jason\\.nuget\\packages\\npgsql\\8.0.1\\npgsql.8.0.1.nupkg.sha512",
+    "C:\\Users\\jason\\.nuget\\packages\\npgsql\\8.0.2\\npgsql.8.0.2.nupkg.sha512",
     "C:\\Users\\jason\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\7.0.11\\npgsql.entityframeworkcore.postgresql.7.0.11.nupkg.sha512",
     "C:\\Users\\jason\\.nuget\\packages\\swashbuckle.aspnetcore\\6.5.0\\swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
     "C:\\Users\\jason\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.5.0\\swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
