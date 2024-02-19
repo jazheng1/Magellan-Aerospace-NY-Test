@@ -22,7 +22,7 @@ namespace MagellanTest.Controllers
         }
 
 
-        [HttpGet("{id}")]
+        [HttpGet("{itemID}")]
         public ActionResult<Item> Get(int itemID) {
             var todo = _dbContext.Items.Find(itemID);
             if (todo == null) {
@@ -31,34 +31,48 @@ namespace MagellanTest.Controllers
             return Ok(todo);
         }
 
-        // [HttpGet("{item_name}")]
-        // public ActionResult<Item> getTotalCost([FromQuery] string item_name) {
-        //     var item = _dbContext.Items.Find(item_name);
-        //     if (item.parent_item != null)
-        //     {   
-        //         // if item is not a parent, return null
-        //         return null;
-        //     }
-        //     else
-        //     {
-        //         return Ok(CalculateTotalCost(item));
-        //     }
-        // }
+        [HttpGet("totalCost/{item_name}")]
+        public async Task<ActionResult<int>> GetTotalCost(string item_name)
+        {
+            // Check if the item exists and is a top-level item (parent_item is null)
+            var item = await _dbContext.Items
+                                       .FirstOrDefaultAsync(i => i.item_name == item_name && i.parent_item == null);
 
-        // // Recursive function to calculate total cost
-        // private int CalculateTotalCost(Item item)
-        // {
-        //     int totalCost = item.cost;
+            if (item == null)
+            {
+                return NotFound("Item not found or is not a parent.");
+            }
 
-        //     // Find all child items of the current item
-        //     var childItems = _dbContext.Items.Where(i => i.parent_item == item.id).ToList();
+            // Call the PostgreSQL function
+            var connection = _dbContext.Database.GetDbConnection();
+            try
+            {
+                await connection.OpenAsync();
+                using (var command = connection.CreateCommand())
+                {
+                    command.CommandText = "SELECT Get_Total_Cost(@itemName);";
+                    command.CommandType = System.Data.CommandType.Text;
+                    var paramName = command.CreateParameter();
+                    paramName.ParameterName = "@itemName";
+                    paramName.Value = item_name;
+                    command.Parameters.Add(paramName);
 
-        //     // Recursively calculate total cost of child items
-        //     foreach (var childItem in childItems)
-        //     {
-        //         totalCost += CalculateTotalCost(childItem);
-        //     }
-        //     return totalCost;
-        // }
+                    var result = await command.ExecuteScalarAsync();
+                    if (result != null)
+                    {
+                        // Console.WriteLine((int)result);
+                        return Ok((int)result);
+                    }
+                    else
+                    {
+                        return NotFound("Could not calculate total cost.");
+                    }
+                }
+            }
+            finally
+            {
+                await connection.CloseAsync();
+            }
+        }
     }
 }

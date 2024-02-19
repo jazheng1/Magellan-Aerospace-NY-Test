@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-
+using MagellanTest.Model;
 public class Startup
 {
     private readonly IConfiguration _configuration;
