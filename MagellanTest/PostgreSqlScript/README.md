@@ -4,7 +4,7 @@ Put the PostgreSQL script of Part 1 here.
 CREATE DATABASE Part;
 
 -- Connect to the Part database
-\c Part
+USE Part
 
 -- Create the item table
 CREATE TABLE item (
